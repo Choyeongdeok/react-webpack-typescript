@@ -1,0 +1,14 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "browsers": ["last 2 versions", ">= 5% in KR"]
+                    //  브라우저의 상위 버전 두개(예: IE 11, 10)와 한국(KR)에서 5% 이상의 점유율을 가지고 있는 브라우저에 대응하여 컴파일
+                }
+            }
+        ],
+        "@babel/react" // React(리액트)도 컴파일
+    ]
+}
