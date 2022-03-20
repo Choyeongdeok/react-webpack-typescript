@@ -9,6 +9,7 @@
                 }
             }
         ],
-        "@babel/react" // React(리액트)도 컴파일
+        "@babel/react", // React 컴파일
+        "@babel/typescript" // Typescript 컴파일
     ]
 }

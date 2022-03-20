@@ -1,9 +1,10 @@
 const path = require('path')
 const HtmlWEbpackPlugin = require('html-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = {
     entry: { // bundling(파일을 하나로 합침) 시작점
-        'js/app': ['./src/App.jsx']
+        'js/app': ['./src/App.tsx'] // jsx -> tsx
     },
     output: { // bundling 결과물
         path: path.resolve(__dirname, 'dist/'),
@@ -16,8 +17,15 @@ module.exports = {
         */
         rules: [
             {
-                test:/\.(js|jsx)$/,
-                use: ['babel-loader'],
+                test:/\.(ts|tsx)$/, // (js|jsx) -> (ts|tsx)
+                use: [
+                    'babel-loader', { // ts loader 추가
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true // 타입 체크를 수행하지 않고 ts -> js 문법 변환(transpile)만 해줌
+                        }
+                    }
+                ],
                 exclude: /node-modules/
             }
         ]
@@ -26,6 +34,7 @@ module.exports = {
         new HtmlWEbpackPlugin({
             template: './src/index.html', // 원본으로 사용할 html
             filename: 'index.html' // dist에 index.html 생성(webpack으로 생성된 번들 파일을 추가)
-        })
+        }),
+        new ForkTsCheckerWebpackPlugin() // 타입 체크 과정을 별도의 분리된 프로세스에서 실행
     ]
 }
