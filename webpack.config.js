@@ -36,5 +36,8 @@ module.exports = {
             filename: 'index.html' // dist에 index.html 생성(webpack으로 생성된 번들 파일을 추가)
         }),
         new ForkTsCheckerWebpackPlugin() // 타입 체크 과정을 별도의 분리된 프로세스에서 실행
-    ]
+    ],
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
+    }
 }
