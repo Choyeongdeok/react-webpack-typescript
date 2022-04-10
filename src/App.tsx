@@ -18,8 +18,8 @@ const App = ({}: Props) => {
 	return (
 		<>
 			{/* <Greetings name='Yeong Deok Cho' mark='!!!' onClick={onClick}/> */}
-			<Counter/>
-			{/* <UserForm onSubmit={onSubmit}/> */}
+			{/* <Counter/> */}
+			<UserForm onSubmit={onSubmit}/>
 			<h2>Written By Typescript</h2>
 		</>
 		
